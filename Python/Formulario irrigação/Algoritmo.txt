@@ -1,0 +1,154 @@
+#include <Wire.h> //INCLUSÃO DA BIBLIOTECA
+#include <RTClib.h> //INCLUSÃO DA BIBLIOTECA
+#include <TimeLib.h>//INCLUSÃO DA BIBLIOTECA
+#include <TimeAlarms.h>//INCLUSÃO DA BIBLIOTECA
+#include <SPI.h>
+#include <SD.h>
+
+File myFile;               // Tipo file para salvar os dados coletados
+const int chipSelect = 53; // Porta de comunicação com o SD Card
+RTC_DS3231 rtc; //OBJETO DO TIPO RTC_DS3231
+
+// Definir portas de sensores de umidade.
+#define pinSensorA A0
+#define pinSensorD 6
+
+// Configurações para ativar os 2 relês.
+//Porta ligada ao pino IN1 do modulo
+int porta_rele1 = 12;
+//Porta ligada ao pino IN2 do modulo
+int porta_rele2 = 11;
+
+// Configurações do sensor de umidade solo.
+const int pinoSensor = A0; //PINO UTILIZADO PELO SENSOR
+int valorLido; //VARIÁVEL QUE ARMAZENA O PERCENTUAL DE UMIDADE DO SOLO
+int analogSoloSeco = 400; //VALOR MEDIDO COM O SOLO SECO (VOCÊ PODE FAZER TESTES E AJUSTAR ESTE VALOR)
+int analogSoloMolhado = 150; //VALOR MEDIDO COM O SOLO MOLHADO (VOCÊ PODE FAZER TESTES E AJUSTAR ESTE VALOR)
+int percSoloSeco = 0; //MENOR PERCENTUAL DO SOLO SECO (0% - NÃO ALTERAR)
+int percSoloMolhado = 100; //MAIOR PERCENTUAL DO SOLO MOLHADO (100% - NÃO ALTERAR)
+
+void setup()
+{
+  Serial.begin(9600); //INICIALIZA A SERIAL
+  desligar();
+  //Define pinos para o relê como saida
+  pinMode(porta_rele1, OUTPUT); // Relê 1
+  pinMode(porta_rele2, OUTPUT); // Relê 2
+  pinMode(pinSensorD, INPUT);
+
+  if (! rtc.begin()) { // se não encontrar o rtc:
+    Serial.println("DS3231 não encontrado");
+    while (1);//SEMPRE ENTRE NO LOOP
+  }
+  Serial.println("DS3231 OK!");
+  if (rtc.lostPower()) {
+    Serial.print("RTC RESETADO");
+    rtc.adjust(DateTime(F(__DATE__), F(__TIME__)));
+  }
+  // Pega a data e a hora do RTC
+  int dataehora[6];
+  getdate(dataehora);
+  // Define a hora na biblioteca timeAlarms
+  setTime(dataehora[0], dataehora[1], dataehora[2], dataehora[3], dataehora[4], dataehora[5]);
+  SetAlarms();
+  delay(100); //INTERVALO DE 100 MILISSEGUNDOS
+  // Tenta inicializar o cartão SD
+  Serial.print("Inicializando Cartão SD...");
+  if (!SD.begin()) {
+    Serial.println("initialization failed!");
+    return;
+  }
+  Serial.println("initialization done.");
+}
+
+void loop() {
+  Alarm.delay(1000); // wait one second between clock display
+
+  DateTime now = rtc.now(); //CHAMADA DE FUNÇÃO
+  // printa a hora
+  char date[10] = "hh:mm:ss";
+  rtc.now().toString(date);
+  Serial.println(date);
+
+  myFile = SD.open("test.txt", FILE_WRITE);
+  // Se abriu tranquilamente, continua o processo:
+  if (myFile) {
+    Serial.println("Escrevendo para a TXT:");
+    //Montar todas informações em uma unica string
+    //data:         dia                      mes                     ano
+    DateTime now = rtc.now(); //CHAMADA DE FUNÇÃO
+
+    // printa a hora
+    rtc.now().toString(date);
+
+    String dados = "," + String(1) + "," + String(2);
+    //envia os dados para o SD
+    Serial.print("Data: ");
+    Serial.println(date);
+    myFile.print(date);
+
+    Serial.print("Dados: ");
+    Serial.println(dados);
+    myFile.println(String(dados));
+
+    // fecha o arquivo
+    myFile.close();
+    Serial.println("Feito!!!");
+  } else {
+    // Se dar erro ao abrir o arquvio:
+    Serial.println("erro ao abrir o arquivo");
+  }
+
+}
+void desligar() {
+  digitalWrite(porta_rele1, HIGH);
+  digitalWrite(porta_rele2, HIGH);
+  Serial.println("desliga acionado");
+  delay(100);
+}
+void ligar() {
+  digitalWrite(porta_rele1, LOW);
+  digitalWrite(porta_rele2, LOW);
+  Serial.println("liga acionado");
+  delay(100);
+}
+
+void getdate(int dataehora[6]) {
+  //variaveis para conversão de hora para int:
+  char H[03] = "hh";
+  char M[03] = "mm";
+  char S[03] = "ss";
+
+  char Y[05] = "YY";
+  char Me[03] = "MM";
+  char D[03] = "DD";
+
+  DateTime now = rtc.now();
+
+  rtc.now().toString(H);
+  rtc.now().toString(M);
+  rtc.now().toString(S);
+
+  rtc.now().toString(Y);
+  rtc.now().toString(Me);
+  rtc.now().toString(D);
+
+  // transforma data e hora em inteiro e guarda na lista entregue
+  dataehora[0] = atol(H);
+  dataehora[1] = atol(M);
+  dataehora[2] = atol(S);
+
+  dataehora[3] = atol(Me);
+  dataehora[4] = atol(D);
+  dataehora[5] = atol(Y);
+
+}
+
+void SetAlarms() {
+  // HORARIOS QUE O SISTEMA VAI LIGAR/DESLIGAR
+  Alarm.alarmRepeat(7, 30, 00, ligar);
+  Alarm.alarmRepeat(10, 0, 00, desligar);
+
+  // SE precisar de mais de 6 alarmes sera necessario aumentar o limite na biblioteca
+
+}

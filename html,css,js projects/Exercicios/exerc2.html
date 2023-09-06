@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Estudos JavaScript</title>
+    <style>
+      .background {
+        display: flex;
+        justify-content: center;
+        background-color: rgb(35, 66, 72);
+      }
+      .calculadora {
+        background-color: rgb(231, 231, 231);
+        width: 280px;
+        height: 390px;
+        border: 6px solid;
+        border-radius: 40px;
+      }
+      .title {
+        font-family: Arial, Helvetica, sans-serif;
+        height: 30px;
+        padding: 4% 13% 4% 13%;
+        margin: 0;
+        font-size: 25px;
+      }
+      .screen {
+        font-family: Arial, Helvetica, sans-serif;
+        width: 89.5%;
+        height: 10%;
+        margin-left: 4.5%;
+        background-color: rgb(194, 194, 194);
+        border: 3px ridge;
+        border-radius: 10px;
+        display: flex;
+        justify-content: right;
+      }
+      .results {
+        text-align: right;
+        font-size: 1.2em;
+        height: 70%;
+        margin: 3px 7px 0 0;
+        font-family: Orbitron, Arial, Helvetica, sans-serif;
+      }
+      .previousnumber {
+        font-size: 0.8em;
+        margin: 0 7px 0 0;
+        line-height: 3px;
+        color: rgb(59, 59, 59);
+        text-align: right;
+      }
+      .botao {
+        height: 14%;
+        width: 21%;
+        padding: 0;
+        margin: 1%;
+        background-color: rgba(255, 123, 0, 0.8);
+        border: 1.5px solid;
+        box-shadow: 2px 2px 6px rgb(105, 105, 105);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      .botaoA {
+        height: 14%;
+        width: 21%;
+        padding: 0;
+        margin: 1%;
+        background-color: rgba(185, 137, 5, 0.8);
+        border: 1.5px solid;
+        box-shadow: 2px 2px 6px rgb(105, 105, 105);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      .botaoapagar {
+        height: 14%;
+        width: 46%;
+        padding: 0;
+        margin: 1%;
+        background-color: rgba(185, 137, 5, 0.8);
+        border: 1.5px solid;
+        box-shadow: 2px 2px 6px rgb(105, 105, 105);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      .botao0 {
+        height: 14%;
+        width: 46%;
+        padding: 0;
+        margin: 1%;
+        background-color: rgba(255, 123, 0, 0.8);
+        border: 1.5px solid;
+        box-shadow: 2px 2px 6px rgb(105, 105, 105);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      .buttons {
+        height: 69%;
+        width: 90%;
+        margin: 5% 5% 0% 5%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body class="background">
+    <main class="calculadora">
+      <h1 class="title">Chunchumaru v2</h1>
+      <div class="screen">
+        <div>
+          <p class="results" name="screen">0</p>
+          <p class="previousnumber" name="previous"></p>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <div
+          class="botaoapagar"
+          name="delete"
+          onmouseleave="outsidemouseA(this.name)"
+          onmouseenter="insidemouseA('delete')"
+          onmousedown="Berase(),Bdown('delete')"
+          onmouseup="Bup('delete')"
+        >
+          ←
+        </div>
+
+        <div
+          class="botaoA"
+          name="clear"
+          onmouseleave="outsidemouseA('clear')"
+          onmouseenter="insidemouseA('clear')"
+          onmousedown="Bclear(),Bdown('clear')"
+          onmouseup="Bup('clear')"
+        >
+          C
+        </div>
+
+        <div
+          class="botaoA"
+          name="equal"
+          onmouseleave="outsidemouseA('equal')"
+          onmouseenter="insidemouseA('equal')"
+          onmousedown="Bequals(),Bdown('equal')"
+          onmouseup="Bup('equal')"
+        >
+          =
+        </div>
+
+        <div
+          class="botao"
+          name="b1"
+          onmouseleave="outsidemouse('b1')"
+          onmouseenter="insidemouse('b1')"
+          onmousedown="changevisor('1'),Bdown('b1')"
+          onmouseup="Bup('b1')"
+        >
+          1
+        </div>
+
+        <div
+          class="botao"
+          name="b2"
+          onmouseleave="outsidemouse('b2')"
+          onmouseenter="insidemouse('b2')"
+          onmousedown="changevisor('2'),Bdown('b2')"
+          onmouseup="Bup('b2')"
+        >
+          2
+        </div>
+
+        <div
+          class="botao"
+          name="b3"
+          onmouseleave="outsidemouse('b3')"
+          onmouseenter="insidemouse('b3')"
+          onmousedown="changevisor('3'),Bdown('b3')"
+          onmouseup="Bup('b3')"
+        >
+          3
+        </div>
+
+        <div
+          class="botaoA"
+          name="bplus"
+          onmouseleave="outsidemouseA('bplus')"
+          onmouseenter="insidemouseA('bplus')"
+          onmousedown="Bplus(),Bdown('bplus')"
+          onmouseup="Bup('bplus')"
+        >
+          +
+        </div>
+
+        <div
+          class="botao"
+          name="b4"
+          onmouseleave="outsidemouse('b4')"
+          onmouseenter="insidemouse('b4')"
+          onmousedown="changevisor('4'),Bdown('b4')"
+          onmouseup="Bup('b4')"
+        >
+          4
+        </div>
+
+        <div
+          class="botao"
+          name="b5"
+          onmouseleave="outsidemouse('b5')"
+          onmouseenter="insidemouse('b5')"
+          onmousedown="changevisor('5'),Bdown('b5')"
+          onmouseup="Bup('b5')"
+        >
+          5
+        </div>
+
+        <div
+          class="botao"
+          name="b6"
+          onmouseleave="outsidemouse('b6')"
+          onmouseenter="insidemouse('b6')"
+          onmousedown="changevisor('6'),Bdown('b6')"
+          onmouseup="Bup('b6')"
+        >
+          6
+        </div>
+
+        <div
+          class="botaoA"
+          name="bminus"
+          onmouseleave="outsidemouseA('bminus')"
+          onmouseenter="insidemouseA('bminus')"
+          onmousedown="Bminus(),Bdown('bminus')"
+          onmouseup="Bup('bminus')"
+        >
+          -
+        </div>
+
+        <div
+          class="botao"
+          name="b7"
+          onmouseleave="outsidemouse('b7')"
+          onmouseenter="insidemouse('b7')"
+          onmousedown="changevisor('7'),Bdown('b7')"
+          onmouseup="Bup('b7')"
+        >
+          7
+        </div>
+
+        <div
+          class="botao"
+          name="b8"
+          onmouseleave="outsidemouse('b8')"
+          onmouseenter="insidemouse('b8')"
+          onmousedown="changevisor('8'),Bdown('b8')"
+          onmouseup="Bup('b8')"
+        >
+          8
+        </div>
+
+        <div
+          class="botao"
+          name="b9"
+          onmouseleave="outsidemouse('b9')"
+          onmouseenter="insidemouse('b9')"
+          onmousedown="changevisor('9'),Bdown('b9')"
+          onmouseup="Bup('b9')"
+        >
+          9
+        </div>
+
+        <div
+          class="botaoA"
+          name="bdiv"
+          onmouseleave="outsidemouseA('bdiv')"
+          onmouseenter="insidemouseA('bdiv')"
+          onmousedown="Bdiv(),Bdown('bdiv')"
+          onmouseup="Bup('bdiv')"
+        >
+          /
+        </div>
+
+        <div
+          class="botao0"
+          name="b0"
+          onmouseleave="outsidemouse('b0')"
+          onmouseenter="insidemouse('b0')"
+          onmousedown="changevisor('0'),Bdown('b0')"
+          onmouseup="Bup('b0')"
+        >
+          0
+        </div>
+
+        <div
+          class="botao"
+          name="bcomma"
+          onmouseleave="outsidemouse('bcomma')"
+          onmouseenter="insidemouse('bcomma')"
+          onmousedown="changevisor('.'),Bdown('bcomma')"
+          onmouseup="Bup('bcomma')"
+        >
+          .
+        </div>
+
+        <div
+          class="botaoA"
+          name="btimes"
+          onmouseleave="outsidemouseA('btimes')"
+          onmouseenter="insidemouseA('btimes')"
+          onmousedown="Btimes(),Bdown('btimes')"
+          onmouseup="Bup('btimes')"
+        >
+          *
+        </div>
+      </div>
+
+      <script>
+        var visor = document.getElementsByName("screen")[0];
+        var signal = document.getElementsByName("signal")[0];
+        var previous = document.getElementsByName("previous")[0];
+        var clear = false;
+        var temp = false;
+
+        // #b98905cc #b98905 A
+        // #ff7b00cc #ff7b00
+
+        function insidemouseA(name) {
+          document.getElementsByName(name)[0].style.background = "#b98905";
+        }
+        function insidemouse(name) {
+          document.getElementsByName(name)[0].style.background = "#ff7b00";
+        }
+
+        function outsidemouseA(name) {
+          document.getElementsByName(name)[0].style.background = "#b98905cc";
+        }
+        function outsidemouse(name) {
+          document.getElementsByName(name)[0].style.background = "#ff7b00cc";
+        }
+        function Bdown(name) {
+          document.getElementsByName(name)[0].style.boxShadow = "0px 0px 0px";
+        }
+        function Bup(name) {
+          document.getElementsByName(name)[0].style.boxShadow =
+            "2px 2px 6px #696969";
+        }
+
+        function changevisor(num) {
+          if (clear) {
+            visor.innerText = "0";
+            previous.innerText = "";
+            clear = false;
+          }
+
+          visor.innerText += num;
+
+          if (visor.innerText[0] == "0" && visor.innerText[1] != ".")
+            visor.innerText = visor.innerText.slice(1); //corta zeros a esquerda (nos dois sentidos)
+        }
+
+        function Berase() {
+          visor.innerText = visor.innerText.slice(0, -1);
+          if (visor.innerText == "") {
+            visor.innerText = "0";
+          }
+        }
+        function Bclear() {
+          previous.innerText = "";
+          visor.innerText = "0";
+        }
+        function Bplus() {
+          calculo("+");
+        }
+        function Bminus() {
+          calculo("-");
+        }
+        function Bdiv() {
+          calculo("/");
+        }
+        function Btimes() {
+          calculo("*");
+        }
+        function Bequals() {
+          calculo("=");
+        }
+
+        function calculo(signal) {
+          previous.innerText += visor.innerText;
+          let resultado = eval(previous.innerText);
+          if (signal == "=") {
+            clear = true;
+            visor.innerText = resultado;
+          } else if (signal == "/" || signal == "*") {
+            if (
+              previous.innerText.includes("+") ||
+              previous.innerText.includes("-")
+            ) {
+              let str = previous.innerText.split("");
+              str.splice(0, 0, "(");
+              str = str.join("");
+              previous.innerText = str + ")" + signal;
+              visor.innerText = 0;
+            } else {
+              previous.innerText += signal;
+              visor.innerText = 0;
+            }
+          } else {
+            previous.innerText += signal;
+            visor.innerText = 0;
+          }
+        }
+      </script>
+    </main>
+  </body>
+</html>

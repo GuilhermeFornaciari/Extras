@@ -1,0 +1,51 @@
+from tkinter import *
+# cores -----------------------------
+co0 = "#000000"  # Preta / black
+co1 = "#ffffff"  # branca / white
+co2 = "#f00000"  # verde / green
+co3 = "#38576b"  # valor / value
+co4 = "#403d3d"  # letra / letters
+verde = '#90f050'
+
+janela = Tk()
+janela.title('')
+janela.geometry('310x300')
+janela.configure(background=co1)
+
+janela.resizable(width=False, height=False)
+
+# definindo frames
+
+frameU = Frame(janela, width=310, height=50, bg=co1, relief='flat')
+frameU.grid(row=0, column=0, pady=1, padx=0, sticky=NSEW)
+
+frameL = Frame(janela, width=310, height=250, bg=co1, relief='flat')
+frameL.grid(row=1, column=0, pady=1, padx=0, sticky=NSEW)
+def exibir():
+    global E_1
+    global E_2
+    global E_3
+    global var
+
+    # configurando frame superior
+    L_nome = Label(frameU, text='    Seja bem-Vindo', anchor=NE, font=('Ivy 23'), bg=co1, fg=co4)
+    L_nome.place(x=5, y=5)
+
+    L_linha = Label(frameU, text='', width=400, anchor=NW, font=('Ivy 1'), bg=co2, fg=co4)
+    L_linha.place(x=0, y=45)
+
+    # Configurando frame inferior
+    C_Button = Button(frameL, text='CONFIRMAR', width=38, height=2, bg=verde,
+                      font=('Ivy 8 bold'), fg=co4, relief=RAISED, overrelief=RIDGE)
+    C_Button.place(x=15, y=30)
+
+    E_Button = Button(frameL, text='CONFIRMAR', width=38, height=2, bg=verde,
+                      font=('Ivy 8 bold'), fg=co4, relief=RAISED, overrelief=RIDGE)
+    E_Button.place(x=15, y=100)
+
+    F_Button = Button(frameL, text='CONFIRMAR', width=38, height=2, bg=verde,
+                      font=('Ivy 8 bold'), fg=co4,relief=FLAT, overrelief=RIDGE)
+    F_Button.place(x=15, y=170)
+
+exibir()
+mainloop()

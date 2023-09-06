@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Modelo</title>
+  </head>
+
+  <body>
+    <%- include('./Modules/Header.ejs') %>
+    <main class="mainLogin">
+      <section class="sections">
+        <h2 class="center">Logar</h2>
+        <p class="center">Caso já possua uma conta, logue aqui</p>
+        <% if (element == "FormRegister") { %>
+        <div class="msgs <%= cssClass %>">
+          <% msgs.forEach(msg =>{ %> <%= msg %> <br />
+          <% }) %>
+        </div>
+        <% } %>
+
+        <form action="/Login/login" method="post" class="forms">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <div class="input">
+            <label for="email">Endereço de email:</label>
+            <input type="text" name="email" />
+          </div>
+
+          <div class="input">
+            <label for="psswd">Senha:</label>
+            <input type="password" name="psswd" />
+          </div>
+          <button class="bnt">Logar</button>
+        </form>
+      </section>
+
+      <section class="sections">
+        <h2 class="center">Registrar</h2>
+        <p class="center">Caso ainda não possua uma conta, cadastre aqui</p>
+
+        <form action="/Login/register" method="post" class="forms">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <div class="input">
+            <label for="email">Endereço de email:</label>
+            <input type="text" name="email" />
+          </div>
+
+          <div class="input">
+            <label for="psswd">Senha:</label>
+            <input type="password" name="psswd" />
+          </div>
+          <button class="bnt">Registrar</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="./assets/js/bundle.js"></script>
+  </body>
+</html>

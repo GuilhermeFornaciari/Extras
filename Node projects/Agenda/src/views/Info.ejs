@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Modelo</title>
+  </head>
+
+  <body>
+    <%- include('./Modules/Header.ejs') %>
+    <main>
+      <form action="" method="post">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+        <div class="modal">
+          <div class="input">
+            <label for="name"></label>
+            <input type="text" value="" name="name" />
+          </div>
+          <div class="input">
+            <label for="lastname"></label>
+            <input type="text" value="" name="lastname" />
+          </div>
+          <div class="input">
+            <label for="email"></label>
+            <input type="text" value="" name="email" />
+          </div>
+          <div class="input">
+            <label for="fone"></label>
+            <input type="text" value="" name="fone" />
+          </div>
+          <button class="btn">Enviar alterações</button>
+        </div>
+      </form>
+    </main>
+
+    <script src="./assets/js/bundle.js"></script>
+  </body>
+</html>

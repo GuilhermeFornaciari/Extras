@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: open sans, Arial, Tahoma, Verdana, sans-serif;
+    }
+    header{
+        background-color: rgb(204, 255, 137);
+        display: flex;
+        justify-content: center;
+        height: 60px;
+    }
+    .title{
+        margin: 10px;
+    }
+    main{
+        background-color: lightgray;
+        margin: 0px 100px 0px 100px;
+        display: flex;
+        height: 700px;
+        padding: 200px;
+    }
+    .animal{
+        background-color: aquamarine;
+        margin: 2%;
+        height: 200px;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="title"> Choose the cutest </h1>
+    </header>
+    <main>
+        {% for anim in a_animals %} 
+        <a class="animal" href="{% url 'animals:detail' anim.id %}">
+            <p> {{ anim.specie_name }}</p>
+            <img src="{{ anim.animal_image.url }}" alt="{{ anim.specie_name }} + ' image'" height="90%">
+        </a>
+        {% endfor %}
+
+    </main>
+</body>
+</html>
+<!--
+
+-->

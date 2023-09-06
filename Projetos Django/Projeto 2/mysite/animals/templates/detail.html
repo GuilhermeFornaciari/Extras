@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{anim.specie_name}} details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: open sans, Arial, Tahoma, Verdana, sans-serif;
+        }
+
+        header {
+            background-color: rgb(204, 255, 137);
+            display: flex;
+            justify-content: center;
+            height: 60px;
+        }
+
+        .title {
+            margin: 10px;
+        }
+
+        main {
+            background-color: lightgray;
+            margin: 0px 100px 0px 100px;
+            display: flex;
+            height: 700px;
+            padding: 200px;
+        }
+
+        .description{
+            margin: 10px ;
+            font-size: 20px
+        }
+        .Button{
+            position: absolute;
+            bottom: 80px;
+            height: 50px;
+            width: 100px;
+        }
+        .votes_bar{
+            background-color: lightcoral;
+            position: absolute;
+            width: 30%;
+            bottom: 80px;
+            height: 50px;
+            display: flex;
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1 class="title"> Animal: {{anim.specie_name}}</h1>
+    </header>
+    <main>
+        <img src="{{anim.animal_image.url}}" alt="ja">
+        <div class="description">
+            <p >{{anim.Animal_description}}</p> <br>
+            Habitat:<a href="{% url 'animals:habitat' anim.habitat.id %}">{{ anim.habitat.Region_Name}}</a>
+
+        </div>
+        <form action="{% url 'animals:vote' anim.id %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="Vote" class="Button">
+
+        </form>
+        <div class="votes_bar"> <p style="text-align: center;">{{ total_votes }} / {{anim.votes }}</p></div>
+
+    </main>
+
+</body>
+
+</html>
+<!--
+
+-->

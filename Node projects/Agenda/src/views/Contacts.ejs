@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Modelo</title>
+  </head>
+
+  <body>
+    <%- include('./Modules/Header.ejs') %>
+    <main class="mainContacts">
+      <h1 class="center">Agenda</h1>
+      <h3 class="center">Aqui estão os contatos cadastrados</h3>
+      <div class="register">
+        <a href="/Register">
+          <button class="bnt green">Cadastrar novo contato</button>
+        </a>
+      </div>
+      <table>
+        <tr>
+          <th>Nome</th>
+          <th>Sobrenome</th>
+          <th>Email</th>
+          <th>Numero</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <th>Guilherme</th>
+          <th>Fornaciari</th>
+          <th>fornaciari49@gmail.com</th>
+          <th>69984696665</th>
+          <th><a href="" class="edit">Editar</a></th>
+          <th><a href="" class="erase">Excluir</a></th>
+        </tr>
+        <tr>
+          <th>Guilherme</th>
+          <th>Fornaciari</th>
+          <th>fornaciari49@gmail.com</th>
+          <th>69984696665</th>
+          <th><a href="" class="edit">Editar</a></th>
+          <th><a href="" class="erase">Excluir</a></th>
+        </tr>
+      </table>
+    </main>
+
+    <script src="./assets/js/bundle.js"></script>
+  </body>
+</html>
