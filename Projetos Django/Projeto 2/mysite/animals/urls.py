@@ -8,3 +8,4 @@ urlpatterns = [
     path('habitats/<int:habitat_id>/', views.habitatview,name='habitat'),
     path('<int:animal_id>/vote/', views.voteanimal,name='vote'),
 ]
+

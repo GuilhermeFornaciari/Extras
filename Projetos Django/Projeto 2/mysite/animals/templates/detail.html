@@ -60,7 +60,7 @@
         <h1 class="title"> Animal: {{anim.specie_name}}</h1>
     </header>
     <main>
-        <img src="{{anim.animal_image.url}}" alt="ja">
+        <img src="{{anim.animal_image.url}}" alt="Legenda">
         <div class="description">
             <p >{{anim.Animal_description}}</p> <br>
             Habitat:<a href="{% url 'animals:habitat' anim.habitat.id %}">{{ anim.habitat.Region_Name}}</a>

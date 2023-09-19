@@ -1,0 +1,30 @@
+C:\Users\forna\Atividades IFRO\Estudo desenvolvimento web\CursoCs\ChessProject\ChessProject\bin\Debug\net7.0\ChessProject.exe
+C:\Users\forna\Atividades IFRO\Estudo desenvolvimento web\CursoCs\ChessProject\ChessProject\bin\Debug\net7.0\ChessProject.deps.json
+C:\Users\forna\Atividades IFRO\Estudo desenvolvimento web\CursoCs\ChessProject\ChessProject\bin\Debug\net7.0\ChessProject.runtimeconfig.json
+C:\Users\forna\Atividades IFRO\Estudo desenvolvimento web\CursoCs\ChessProject\ChessProject\bin\Debug\net7.0\ChessProject.dll
+C:\Users\forna\Atividades IFRO\Estudo desenvolvimento web\CursoCs\ChessProject\ChessProject\bin\Debug\net7.0\ChessProject.pdb
+C:\Users\forna\Atividades IFRO\Estudo desenvolvimento web\CursoCs\ChessProject\ChessProject\obj\Debug\net7.0\ChessProject.csproj.AssemblyReference.cache
+C:\Users\forna\Atividades IFRO\Estudo desenvolvimento web\CursoCs\ChessProject\ChessProject\obj\Debug\net7.0\ChessProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\forna\Atividades IFRO\Estudo desenvolvimento web\CursoCs\ChessProject\ChessProject\obj\Debug\net7.0\ChessProject.AssemblyInfoInputs.cache
+C:\Users\forna\Atividades IFRO\Estudo desenvolvimento web\CursoCs\ChessProject\ChessProject\obj\Debug\net7.0\ChessProject.AssemblyInfo.cs
+C:\Users\forna\Atividades IFRO\Estudo desenvolvimento web\CursoCs\ChessProject\ChessProject\obj\Debug\net7.0\ChessProject.csproj.CoreCompileInputs.cache
+C:\Users\forna\Atividades IFRO\Estudo desenvolvimento web\CursoCs\ChessProject\ChessProject\obj\Debug\net7.0\ChessProject.dll
+C:\Users\forna\Atividades IFRO\Estudo desenvolvimento web\CursoCs\ChessProject\ChessProject\obj\Debug\net7.0\refint\ChessProject.dll
+C:\Users\forna\Atividades IFRO\Estudo desenvolvimento web\CursoCs\ChessProject\ChessProject\obj\Debug\net7.0\ChessProject.pdb
+C:\Users\forna\Atividades IFRO\Estudo desenvolvimento web\CursoCs\ChessProject\ChessProject\obj\Debug\net7.0\ChessProject.genruntimeconfig.cache
+C:\Users\forna\Atividades IFRO\Estudo desenvolvimento web\CursoCs\ChessProject\ChessProject\obj\Debug\net7.0\ref\ChessProject.dll
+C:\Users\forna\GitHub\ChessProject\ChessProject\bin\Debug\net7.0\ChessProject.exe
+C:\Users\forna\GitHub\ChessProject\ChessProject\bin\Debug\net7.0\ChessProject.deps.json
+C:\Users\forna\GitHub\ChessProject\ChessProject\bin\Debug\net7.0\ChessProject.runtimeconfig.json
+C:\Users\forna\GitHub\ChessProject\ChessProject\bin\Debug\net7.0\ChessProject.dll
+C:\Users\forna\GitHub\ChessProject\ChessProject\bin\Debug\net7.0\ChessProject.pdb
+C:\Users\forna\GitHub\ChessProject\ChessProject\obj\Debug\net7.0\ChessProject.csproj.AssemblyReference.cache
+C:\Users\forna\GitHub\ChessProject\ChessProject\obj\Debug\net7.0\ChessProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\forna\GitHub\ChessProject\ChessProject\obj\Debug\net7.0\ChessProject.AssemblyInfoInputs.cache
+C:\Users\forna\GitHub\ChessProject\ChessProject\obj\Debug\net7.0\ChessProject.AssemblyInfo.cs
+C:\Users\forna\GitHub\ChessProject\ChessProject\obj\Debug\net7.0\ChessProject.csproj.CoreCompileInputs.cache
+C:\Users\forna\GitHub\ChessProject\ChessProject\obj\Debug\net7.0\ChessProject.dll
+C:\Users\forna\GitHub\ChessProject\ChessProject\obj\Debug\net7.0\refint\ChessProject.dll
+C:\Users\forna\GitHub\ChessProject\ChessProject\obj\Debug\net7.0\ChessProject.pdb
+C:\Users\forna\GitHub\ChessProject\ChessProject\obj\Debug\net7.0\ChessProject.genruntimeconfig.cache
+C:\Users\forna\GitHub\ChessProject\ChessProject\obj\Debug\net7.0\ref\ChessProject.dll
