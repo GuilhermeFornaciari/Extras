@@ -41,7 +41,7 @@
     </header>
     <main>
         {% for anim in a_animals %} 
-        <a class="animal" href="{% url 'animals:detail' anim.id %}">
+        <a class="animal" href="{% url 'detail' anim.id %}">
             <p> {{ anim.specie_name }}</p>
             <img src="{{ anim.animal_image.url }}" alt="{{ anim.specie_name }} + ' image'" height="90%">
         </a>
