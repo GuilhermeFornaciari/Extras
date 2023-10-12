@@ -1,7 +1,7 @@
 import { ParameterizedQuery } from "pg-promise";
 import {postgreSQLConnection, Connection} from "./connections";
 import { Book, Entity, column } from "./Entities/Entity";
-
+import { ListFormat } from "typescript";
 class ORM {
     constructor(readonly connection:Connection){
     }
@@ -26,6 +26,4 @@ async function init() {
     console.log(books);
     await connection.close()   
 }
-
 init()
-    
